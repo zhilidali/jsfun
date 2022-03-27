@@ -1,10 +1,15 @@
 {
   "sourceType": "unambiguous",
-  "presets": [],
-  "plugins": [
-    // class {#a () {}}
-    ["@babel/plugin-proposal-private-methods"],
-    // class {a; #a; static a; static #a;}
-    ["@babel/plugin-proposal-class-properties"]
-  ]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "shippedProposals": true,
+        "exclude": ["@babel/plugin-transform-regenerator"]
+      }
+    ]
+  ],
+  "plugins": []
 }
