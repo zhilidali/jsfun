@@ -1,6 +1,6 @@
 {
   "name": "@zhilidali/realtime-log",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "realtime log",
   "keywords": [
     "realtime",
@@ -9,5 +9,9 @@
   "author": "zhilidali <zhilidali@qq.com>",
   "homepage": "https://github.com/zhilidali/jsfun",
   "license": "MIT",
-  "scripts": {}
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "06a7f42279a958cb084158dc088811bf8527fc3c"
 }
