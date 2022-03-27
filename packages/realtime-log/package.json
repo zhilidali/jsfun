@@ -2,7 +2,7 @@
   "name": "@zhilidali/realtime-log",
   "version": "0.0.4",
   "type": "module",
-  "main": "dist/index.js.js",
+  "main": "dist/index.js",
   "files": [
     "/dist"
   ],
