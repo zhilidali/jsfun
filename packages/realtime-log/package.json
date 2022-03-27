@@ -12,6 +12,5 @@
   "scripts": {},
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "06a7f42279a958cb084158dc088811bf8527fc3c"
+  }
 }
