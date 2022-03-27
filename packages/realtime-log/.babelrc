@@ -1,0 +1,10 @@
+{
+  "sourceType": "unambiguous",
+  "presets": [],
+  "plugins": [
+    // class {#a () {}}
+    ["@babel/plugin-proposal-private-methods"],
+    // class {a; #a; static a; static #a;}
+    ["@babel/plugin-proposal-class-properties"]
+  ]
+}

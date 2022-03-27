@@ -2,17 +2,28 @@
   "name": "@zhilidali/realtime-log",
   "version": "0.0.3",
   "type": "module",
-  "main": "realtime-log.js",
+  "main": "dist/index.js.js",
+  "files": [
+    "/dist"
+  ],
   "description": "realtime log",
   "keywords": [
     "realtime",
     "log"
   ],
-  "author": "zhilidali <zhilidali@qq.com>",
-  "homepage": "https://github.com/zhilidali/jsfun",
-  "license": "MIT",
-  "scripts": {},
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "scripts": {
+    "build": "babel realtime-log.js -o dist/index.js --compact"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-private-methods": "^7.16.11"
+  },
+  "author": "zhilidali <zhilidali@qq.com>",
+  "homepage": "https://github.com/zhilidali/jsfun",
+  "license": "MIT"
 }
