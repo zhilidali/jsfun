@@ -1,0 +1,13 @@
+{
+  "name": "realtime-log",
+  "version": "0.0.1",
+  "description": "realtime log",
+  "keywords": [
+    "realtime",
+    "log"
+  ],
+  "author": "zhilidali <zhilidali@qq.com>",
+  "homepage": "https://github.com/zhilidali/jsfun",
+  "license": "MIT",
+  "scripts": {}
+}
