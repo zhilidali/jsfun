@@ -1,0 +1,20 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint 'packages' --ext .jsx,.js",
+    "eslint:fix": "npm run eslint -- --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint": "npm run eslint && npm run prettier",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@epcor/eslint-config": "^0.0.2",
+    "@epcor/prettier-config": "^0.0.1",
+    "eslint": "^8.12.0",
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "prettier": "^2.6.1"
+  }
+}
