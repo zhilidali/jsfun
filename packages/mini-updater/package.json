@@ -1,28 +1,18 @@
 {
   "name": "@zhilidali/mini-updater",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
-  "main": "dist/index.js",
-  "files": [
-    "/dist"
-  ],
-  "description": "微信小程序更新管理器",
+  "main": "mini-updater.js",
+  "description": "微信小程序更新管理工具",
   "keywords": [
+    "更新小程序",
     "小程序",
     "mini program",
     "UpdateManager",
-    "updateWeChatApp"
+    "getUpdateManager"
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "babel mini-updater.js -o dist/index.js --compact"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.5",
-    "@babel/preset-env": "^7.18.2"
   },
   "author": "zhilidali <zhilidali@qq.com>",
   "homepage": "https://github.com/zhilidali/jsfun",

@@ -1,25 +1,37 @@
 # mini updater
 
-一款更新微信或小程序的小工具
+微信小程序更新管理工具
 
-- updater 直接在小程序 onLaunch 中调用即可
-- 内置 updateManager，可自定义事件监听和方法调用
-- canIUse 当微信版本过低时，提示并升级微信
-
-## 安装
+## 安装及使用
 
 ```sh
 npm i @zhilidali/mini-updater
 ```
 
-## 使用
-
 ```js
-// 推荐使用的方式
 import { updater } from '@zhilidali/mini-updater';
 
 onLaunch () {
-  // 直接在小程序 onLaunch 中调用即可
+  // 推荐简单直接地在小程序 onLaunch 中调用
   updater();
+
+  // 可传入配置项
+  updater({
+    updateManager: wx.getUpdateManager(),
+    log: console.log,
+    onCheck(res, updateManager) {},
+    onReady(applyUpdate, updateManager) {
+      wx.showModal({
+        title: '更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success(res) {
+          if (res.confirm) {
+            applyUpdate();
+          }
+        },
+      });
+    },
+    onFailed(res, updateManager) {},
+  })
 }
 ```
