@@ -11,21 +11,21 @@
 ## 安装
 
 ```sh
-npm i @surfs/realtime-log
+npm i @zhilidali/realtime-log
 ```
 
 ## 使用
 
 ```js
 // 推荐使用的方式
-import log from '@surfs/realtime-log';
+import log from '@zhilidali/realtime-log';
 
 log.switchDebug(true);
 log.info('something');
 ```
 
 ```js
-import { Log } from '@surfs/realtime-log';
+import { Log } from '@zhilidali/realtime-log';
 
 const log = new Log({
   enabledDebug: false,

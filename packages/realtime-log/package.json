@@ -2,7 +2,7 @@
   "name": "@zhilidali/realtime-log",
   "version": "0.0.7",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/realtime-log.js",
   "files": [
     "/dist"
   ],
@@ -15,12 +15,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "babel realtime-log.js -o dist/index.js --compact"
+    "dev": "babel realtime-log.js -d dist --no-babelrc --copy-files --delete-dir-on-start -w",
+    "build": "babel realtime-log.js -d dist --compact --delete-dir-on-start"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11"
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2"
   },
   "author": "zhilidali <zhilidali@qq.com>",
   "homepage": "https://github.com/zhilidali/jsfun",
