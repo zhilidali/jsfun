@@ -1,24 +1,35 @@
+const { getRealtimeLogManager, getAccountInfoSync } = globalThis.wx ?? {};
+
 export class Log {
   constructor({
-    enabledDebug = false,
-    logger = globalThis.wx && globalThis.wx.getRealtimeLogManager
-      ? globalThis.wx.getRealtimeLogManager()
-      : {},
-    env = globalThis.wx && globalThis.wx.getAccountInfoSync
-      ? globalThis.wx.getAccountInfoSync().miniProgram.envVersion
-      : '',
+    logger = getRealtimeLogManager?.() ?? {},
+    env = getAccountInfoSync().miniProgram.version ??
+      getAccountInfoSync().miniProgram.envVersion ??
+      '',
+    enabledConsole = false,
+    debug,
   } = {}) {
     this.logger = logger;
-    this.enabledDebug = enabledDebug;
+    this.enabledConsole = enabledConsole;
     this.env = env;
+    if (debug) {
+      const injectDebug = namespace => {
+        const log = debug(namespace);
+        return Object.setPrototypeOf((...rest) => {
+          log(...rest);
+          this.logger.debug(...(this.env ? [this.env].concat(rest) : rest));
+        }, log);
+      };
+      return Object.setPrototypeOf(injectDebug, this);
+    }
   }
   _log = console.log;
   _info = console.info;
   _debug = console.debug;
   _warn = console.warn;
   _error = console.error;
-  switchDebug(enabledDebug = !this.enabledDebug) {
-    this.enabledDebug = enabledDebug;
+  switchConsole(enabledConsole = !this.enabledConsole) {
+    this.enabledConsole = enabledConsole;
   }
 
   log = this.#fn.bind(this, 'log');
@@ -27,12 +38,10 @@ export class Log {
   warn = this.#fn.bind(this, 'warn');
   error = this.#fn.bind(this, 'error');
   #fn(level, ...rest) {
-    const mapLevel =
-      {
-        log: 'info',
-        debug: 'info',
-      }[level] ?? level;
-    this.enabledDebug && this[`_${level}`](...rest);
+    const mapLevel = { log: 'info' }[level] ?? level;
+    // 打印到控制台
+    this.enabledConsole && this[`_${level}`](...rest);
+    // 打印到微信后台
     this.logger[mapLevel]?.(...(this.env ? [this.env].concat(rest) : rest));
   }
   overwrite(overwriteNames = ['log', 'info', 'debug', 'warn', 'error']) {
@@ -53,5 +62,7 @@ export class Log {
   }
 }
 
-export const log = new Log();
-export default log;
+// export const log = new Log();
+// export default log;
+export const log = new Log({ enabledConsole: true });
+export default Object.setPrototypeOf(Log, log);

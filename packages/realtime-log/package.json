@@ -1,6 +1,6 @@
 {
   "name": "@zhilidali/realtime-log",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/realtime-log.js",
   "files": [

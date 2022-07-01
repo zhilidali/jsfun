@@ -1,5 +1,7 @@
 # mini updater
 
+[![NPM version](https://img.shields.io/npm/v/@zhilidali/mini-updater)](https://www.npmjs.org/package/@zhilidali/mini-updater)
+
 微信小程序更新管理工具
 
 ## 安装及使用
