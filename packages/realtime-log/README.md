@@ -30,7 +30,7 @@ log.info('something');
 高级的使用方式
 
 ```js
-import { Log } from '@zhilidali/realtime-log';
+import Log from '@zhilidali/realtime-log';
 import debug from 'debug';
 
 const log = new Log({ debug });

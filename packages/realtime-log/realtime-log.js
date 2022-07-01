@@ -3,9 +3,8 @@ const { getRealtimeLogManager, getAccountInfoSync } = globalThis.wx ?? {};
 export class Log {
   constructor({
     logger = getRealtimeLogManager?.() ?? {},
-    env = getAccountInfoSync().miniProgram.version ??
-      getAccountInfoSync().miniProgram.envVersion ??
-      '',
+    env = getAccountInfoSync().miniProgram.version ||
+      getAccountInfoSync().miniProgram.envVersion,
     enabledConsole = false,
     debug,
   } = {}) {
@@ -17,7 +16,7 @@ export class Log {
         const log = debug(namespace);
         return Object.setPrototypeOf((...rest) => {
           log(...rest);
-          this.logger.debug(...(this.env ? [this.env].concat(rest) : rest));
+          this.logger.info(...(this.env ? [this.env].concat(rest) : rest));
         }, log);
       };
       return Object.setPrototypeOf(injectDebug, this);
@@ -38,7 +37,7 @@ export class Log {
   warn = this.#fn.bind(this, 'warn');
   error = this.#fn.bind(this, 'error');
   #fn(level, ...rest) {
-    const mapLevel = { log: 'info' }[level] ?? level;
+    const mapLevel = { log: 'info', debug: 'info' }[level] ?? level;
     // 打印到控制台
     this.enabledConsole && this[`_${level}`](...rest);
     // 打印到微信后台
@@ -48,13 +47,11 @@ export class Log {
     return overwriteNames.map(i => (console[i] = this[i]));
   }
 
-  /** 从基础库2.7.3开始支持 */
   setFilterMsg(msg) {
     if (typeof msg === 'string') {
       this.logger.setFilterMsg?.(msg);
     }
   }
-  /** 从基础库2.8.1开始支持 */
   addFilterMsg(msg) {
     if (typeof msg === 'string') {
       this.logger.addFilterMsg?.(msg);
@@ -62,7 +59,5 @@ export class Log {
   }
 }
 
-// export const log = new Log();
-// export default log;
 export const log = new Log({ enabledConsole: true });
 export default Object.setPrototypeOf(Log, log);
