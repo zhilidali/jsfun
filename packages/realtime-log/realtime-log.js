@@ -1,12 +1,12 @@
+const { getRealtimeLogManager, getAccountInfoSync } = globalThis.wx ?? {};
+
 export class Log {
   constructor({
     enabledDebug = false,
-    logger = globalThis.wx && globalThis.wx.getRealtimeLogManager
-      ? globalThis.wx.getRealtimeLogManager()
-      : {},
-    env = globalThis.wx && globalThis.wx.getAccountInfoSync
-      ? globalThis.wx.getAccountInfoSync().miniProgram.envVersion
-      : '',
+    logger = getRealtimeLogManager?.() ?? {},
+    env = getAccountInfoSync().miniProgram.version ??
+      getAccountInfoSync().miniProgram.envVersion ??
+      '',
   } = {}) {
     this.logger = logger;
     this.enabledDebug = enabledDebug;

@@ -1,12 +1,12 @@
 {
   "name": "@zhilidali/realtime-log",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "main": "dist/realtime-log.js",
   "files": [
     "/dist"
   ],
-  "description": "realtime log",
+  "description": "微信实时日志管理器",
   "keywords": [
     "realtime",
     "log"

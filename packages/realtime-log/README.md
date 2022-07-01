@@ -1,5 +1,7 @@
 # realtimeLog
 
+[![NPM version](https://img.shields.io/npm/v/@zhilidali/realtime-log)](https://www.npmjs.org/package/@zhilidali/realtime-log)
+
 一款内置微信小程序实时日志的小工具
 
 - 支持原生微信小程序、Taro 框架等。
