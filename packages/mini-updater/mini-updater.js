@@ -20,3 +20,5 @@ export function updater({
 
   return updateManager;
 }
+
+export default updater;

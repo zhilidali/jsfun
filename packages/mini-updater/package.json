@@ -1,6 +1,6 @@
 {
   "name": "@zhilidali/mini-updater",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "mini-updater.js",
   "description": "微信小程序更新管理工具",

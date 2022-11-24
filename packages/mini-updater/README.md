@@ -11,7 +11,7 @@ npm i @zhilidali/mini-updater
 ```
 
 ```js
-import { updater } from '@zhilidali/mini-updater';
+import updater from '@zhilidali/mini-updater';
 
 onLaunch () {
   // 推荐简单直接地在小程序 onLaunch 中调用
